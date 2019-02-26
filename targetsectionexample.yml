@@ -1,0 +1,7 @@
+--- # My First YAML playbook
+- hosts: slave
+  user: ansible
+  sudo: yes             # yes or no
+  connection: ssh       # yes or no
+  gather_facts: no      # yes or no
+...

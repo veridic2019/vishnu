@@ -1,0 +1,15 @@
+--- # My First YAML playbooks
+- hosts: slave
+  user: ansible
+  sudo: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+    - name: Install HTTPD server on RHEL 7
+      action: yum name=httpd state=installed
+      notify: Restart HTTPD # this is called only if the action is ran & successful #
+  handlers:
+      - name: Restart HTTPD # this has to match the notify name #
+        action: service name=httpd state=restarted
+... 
+

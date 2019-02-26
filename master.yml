@@ -1,0 +1,14 @@
+--- # master playbook for webservers
+- hosts: slave
+  user: ansible
+  sudo: yes
+  connection: ssh
+  pre_tasks:
+  - name: Start of the Role
+    raw: date > /home/ansible/rolestart.log
+  roles:
+    - webservers
+  post_tasks:
+  - name: End of the Role
+    raw: date > /home/ansible/roleend.log
+...

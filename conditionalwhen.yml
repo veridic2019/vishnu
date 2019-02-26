@@ -1,0 +1,15 @@
+--- # When playbook example
+- hosts: slave
+  user: ansible
+  sudo: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+    - name: Install apache for redhat
+      command: yum -y install httpd
+      when: ansible_os_family == "RHEL"
+    - name: Install apache for debian
+      command: apt-get -y install apache2
+      when: ansible_os_family == "Debian"
+...
+
